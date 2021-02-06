@@ -80,7 +80,9 @@ window.addEventListener("load", () => {
   //... your code goes here
   // addRemoveEventListener();
 
-  document.addEventListener("click", (event) => {
+  // add an event listener to the tbody and listen for events bubbling up
+  const tbody = document.querySelector("tbody");
+  tbody.addEventListener("click", (event) => {
     console.log(event.target);
     if (event.target.className.includes("btn-remove")) {
       event.target.parentNode.parentNode.remove();
