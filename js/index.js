@@ -3,12 +3,10 @@
 function updateSubtotal(product) {
   const price = product.querySelector(".price span").innerHTML;
   const quantity = product.querySelector(".quantity input").value;
-
   const total = (price * quantity).toFixed(2);
   // //... your code goes here
   // const subtotal = product.querySelector(".subtotal span");
   // subtotal.innerText = total.toFixed(2);
-
   product.querySelector(".subtotal span").innerText = total;
   return Number(total);
 }
@@ -21,7 +19,6 @@ function calculateAll() {
   // end of test
 
   // ITERATION 2
-  //... your code goes here
   const allProducts = document.getElementsByClassName("product");
   let total = 0;
   for (let i = 0; i < allProducts.length; i++) {
@@ -30,13 +27,11 @@ function calculateAll() {
   console.log(total);
 
   // ITERATION 3
-  //... your code goes here
   const totalSpan = document.querySelector("#total-value span");
   totalSpan.innerHTML = total;
 }
 
 // ITERATION 4
-
 function removeProduct(event) {
   const target = event.currentTarget;
   console.log("The target in remove is:", target);
@@ -47,7 +42,6 @@ function removeProduct(event) {
 }
 
 // ITERATION 5
-
 function createProduct() {
   //... your code goes here
   console.log("create product called");
@@ -55,8 +49,8 @@ function createProduct() {
   const inputs = createTr.getElementsByTagName("input");
   const productName = inputs[0].value;
   const productPrice = inputs[1].value;
-  console.log(productName, productPrice);
 
+  // append another tr to the tbody(in addition to copying anything that used to be on the table body)
   document.querySelector("tbody").innerHTML += `<tr class="product">
   <td class="name">
     <span>${productName}</span>
@@ -74,6 +68,7 @@ function createProduct() {
 }
 
 window.addEventListener("load", () => {
+  // find the button to calculate prices and add event lister to it
   const calculatePricesBtn = document.getElementById("calculate");
   calculatePricesBtn.addEventListener("click", calculateAll);
 
@@ -89,10 +84,12 @@ window.addEventListener("load", () => {
     }
   });
 
+  // find the create button and add event listener to it
   const createBtn = document.querySelector("#create");
   createBtn.addEventListener("click", createProduct);
 });
 
+// function to grab all delete buttons on the page and add event listers to them
 function addRemoveEventListener() {
   const removeProductBtn = document.getElementsByClassName("btn btn-remove");
   [...removeProductBtn].forEach((btn) => {
